@@ -7,9 +7,10 @@ from 0 to 6 as the rounds
 
 if exit midway through form filling will return a int 0 to signify exiting before completion.
 """
+from LPR_PLAYER_CLASS import Player
 
 
-def lpr_add_game(player_list):
+def lpr_add_game():
     # Start out by asking how many players are playing
     print('-------------------------------------------------------------')
     print(' ADDING NEW GAME, TYPE -Q TO STOP ADDING NEW GAME AT ANY TIME')
@@ -58,7 +59,7 @@ def lpr_add_game(player_list):
                 print('-----------------------------------------------------')
                 return 0
             # Checking the player against the master database fed in the parameters of the function
-            elif player_name_input in player_list:
+            elif player_name_input in Player._players:
                 # Checks if the player is already in the game
                 if player_name_input in player_in_game_list:
                     # If player is in master list and in game, allows the user to try again
@@ -144,6 +145,3 @@ def lpr_add_game(player_list):
     # Adds the 'winner' key to the dictionary and sets the value as the winner of the game.
     player_score_dictionary['winner'] = winner
     return player_score_dictionary
-
-
-

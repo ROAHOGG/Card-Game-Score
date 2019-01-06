@@ -1,4 +1,14 @@
-class Player:
+
+
+class Player(object):
+    _players = {}
+
+    @classmethod
+    def get_player(cls, name):
+        if name not in cls._players:
+            cls._players[name] = cls(name)
+        return cls._players[name]
+
     def __init__(self, name):
 
         self.name = name
@@ -6,7 +16,7 @@ class Player:
         self.round_averages = [0, 0, 0, 0, 0, 0, 0]
         # Total points for this player of each round
         self.round_totals = [0, 0, 0, 0, 0, 0, 0]
-        # Total wins that this player has receved in the rounds
+        # Total wins that this player has receded in the rounds
         self.round_wins = [0, 0, 0, 0, 0, 0, 0]
         # Largest score of each round that the player has done
         self.round_high_scores = [0, 0, 0, 0, 0, 0, 0]
@@ -46,7 +56,7 @@ class Player:
                 self.round_high_scores[score_index] = score_list[score_index]
 
         # Checks if the game was won by the user, if so increments the games won counter.
-        if game_winner == self:
+        if game_winner == self.name:
             self.total_games_won += 1
 
         # Handles the total game scores and the average game scores
